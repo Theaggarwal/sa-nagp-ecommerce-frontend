@@ -15,6 +15,18 @@ export interface B2cConfig {
 
 export const environment = {
   production: false,
+  // ─── API endpoints ─────────────────────────────────────────────────────────
+  // Replace with your actual URLs. All values are read once at bootstrap time.
+  apis: {
+    // ElasticSearch _search endpoint (product catalogue queries)
+    elasticSearch: 'https://your-elasticsearch-host/products/_search',
+    // Azure Container Apps – product detail & inventory
+    productDetail: 'https://your-azure-container-app.azurecontainerapps.io/api/products',
+    // Azure Container Apps – shopping cart operations
+    cart: 'https://your-azure-container-app.azurecontainerapps.io/api/cart',
+    // Azure Container Apps – wishlist / favourites
+    wishlist: 'https://your-azure-container-app.azurecontainerapps.io/api/wishlist'
+  },
   b2c: {
     tenantName: 'your-tenant-name',
     tenantDomain: 'your-tenant-name.b2clogin.com',

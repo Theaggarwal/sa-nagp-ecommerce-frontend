@@ -1,0 +1,100 @@
+<div class="search-shell">
+
+  <!-- Top bar -->
+  <header class="search-topbar">
+    <a routerLink="/search" class="logo">Shop<span>+</span></a>
+
+    <div class="search-box">
+      <input
+        type="search"
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onQueryChange()"
+        placeholder="Search products..."
+        aria-label="Search products"
+        class="search-input"
+      />
+      <span class="search-icon">&#128269;</span>
+    </div>
+
+    <a routerLink="/login" class="topbar-link">Sign In</a>
+  </header>
+
+  <!-- Result summary -->
+  <div class="results-bar" *ngIf="!loading && !error">
+    <span *ngIf="searchQuery">{{ total }} result{{ total !== 1 ? 's' : '' }} for "{{ searchQuery }}"</span>
+    <span *ngIf="!searchQuery">{{ total }} product{{ total !== 1 ? 's' : '' }} available</span>
+  </div>
+
+  <!-- Error state -->
+  <div class="state-message error" *ngIf="error">
+    <p>{{ error }}</p>
+    <button class="btn btn-sec-col" (click)="onQueryChange()">Retry</button>
+  </div>
+
+  <!-- Loading skeleton -->
+  <div class="product-grid skeleton-grid" *ngIf="loading">
+    <div class="skeleton-card" *ngFor="let n of [1,2,3,4,5,6,7,8]">
+      <div class="sk-img"></div>
+      <div class="sk-line lg"></div>
+      <div class="sk-line sm"></div>
+      <div class="sk-line md"></div>
+    </div>
+  </div>
+
+  <!-- Product grid -->
+  <main class="product-grid" *ngIf="!loading && !error">
+    <article
+      class="product-card"
+      *ngFor="let product of products"
+      (click)="openDetail(product.id)"
+      role="button"
+      tabindex="0"
+      (keyup.enter)="openDetail(product.id)"
+    >
+      <figure class="card-image">
+        <img [src]="product.thumbnailUrl" [alt]="product.name" loading="lazy" />
+        <span class="badge-stock yes" *ngIf="product.inStock">In Stock</span>
+        <span class="badge-stock no" *ngIf="!product.inStock">Out of Stock</span>
+      </figure>
+
+      <div class="card-body">
+        <p class="card-brand">{{ product.brand }}</p>
+        <h2 class="card-name">{{ product.name }}</h2>
+
+        <div class="card-rating">
+          <span class="stars" [attr.aria-label]="'Rating ' + product.rating + ' out of 5'">
+            <span *ngFor="let s of [1,2,3,4,5]" [ngClass]="{ filled: s <= product.rating }">&#9733;</span>
+          </span>
+          <span class="review-count">({{ product.reviews }})</span>
+        </div>
+
+        <div class="card-price">
+          <strong>{{ product.price | currency:'INR':'symbol':'1.0-0' }}</strong>
+          <s *ngIf="product.originalPrice">{{ product.originalPrice | currency:'INR':'symbol':'1.0-0' }}</s>
+        </div>
+
+        <button type="button" class="btn btn-view" [routerLink]="['/product', product.id]" (click)="$event.stopPropagation()">
+          View Details
+        </button>
+      </div>
+    </article>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="products.length === 0">
+      <p>No products found. Try a different search term.</p>
+    </div>
+  </main>
+
+  <!-- Pagination -->
+  <nav class="pagination" *ngIf="!loading && !error && totalPages > 1" aria-label="Page navigation">
+    <button class="pg-btn" (click)="loadPage(page - 1)" [disabled]="page === 0">&#8592; Prev</button>
+    <button
+      class="pg-btn"
+      *ngFor="let p of pages"
+      [ngClass]="{ active: p === page }"
+      (click)="loadPage(p)"
+    >{{ p + 1 }}</button>
+    <button class="pg-btn" (click)="loadPage(page + 1)" [disabled]="page >= totalPages - 1">Next &#8594;</button>
+  </nav>
+
+</div>

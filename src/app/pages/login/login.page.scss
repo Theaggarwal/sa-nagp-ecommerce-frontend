@@ -1,135 +1,152 @@
-.auth-wrap {
+.auth-shell {
   min-height: 100vh;
   display: grid;
   place-items: center;
   padding: 2rem 1rem;
-  position: relative;
 }
 
-.ambient-shape {
-  position: absolute;
-  width: min(90vw, 60rem);
-  height: min(90vw, 60rem);
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #7bf1a8, #1f8974 40%, #0b1f2f 80%);
-  filter: blur(80px);
-  opacity: 0.3;
-  z-index: 0;
+.auth-layout {
+  width: min(62rem, 100%);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 20px 58px rgba(10, 12, 17, 0.11);
 }
 
-.auth-card {
-  position: relative;
-  z-index: 1;
-  width: min(28rem, 100%);
-  background: linear-gradient(160deg, rgba(8, 29, 46, 0.94), rgba(14, 43, 65, 0.94));
-  border: 1px solid rgba(145, 222, 181, 0.35);
-  border-radius: 1.25rem;
-  padding: 2rem;
-  box-shadow: 0 20px 50px rgba(2, 8, 18, 0.45);
-  animation: enter-card 500ms ease-out;
+.auth-intro {
+  padding: 2.2rem 1.8rem;
+  background:
+    linear-gradient(120deg, rgba(220, 204, 153, 0.23), rgba(220, 204, 153, 0.1)),
+    repeating-linear-gradient(45deg, rgba(6, 6, 6, 0.02) 0 12px, transparent 12px 24px);
+  border-right: 1px solid #eceff3;
 }
 
 .eyebrow {
-  color: #9cf3be;
+  color: #737880;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
 }
 
 h1 {
-  margin: 0.5rem 0 0;
-  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  margin: 0.5rem 0 0.4rem;
+  font-size: clamp(1.6rem, 3.7vw, 2.2rem);
+  color: #212224;
 }
 
 .supporting {
-  margin: 0.5rem 0 1.5rem;
-  color: #c8dce7;
+  margin: 0.4rem 0 1.2rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+.intro-link {
+  text-decoration: none;
+  color: #212224;
+  border-bottom: 1px solid #dccc99;
+  padding-bottom: 0.15rem;
+}
+
+.intro-link:hover {
+  color: #dccc99;
+}
+
+.auth-form-wrap {
+  padding: 2rem 1.8rem;
 }
 
 .auth-form {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.7rem;
 }
 
 label {
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 400;
+  font-size: 0.83rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #737880;
 }
 
 input {
-  border: 1px solid rgba(191, 224, 239, 0.35);
-  background: rgba(6, 20, 33, 0.65);
-  color: #f4fcff;
-  border-radius: 0.65rem;
-  padding: 0.75rem 0.85rem;
-}
-
-.btn {
-  border: none;
-  border-radius: 0.75rem;
-  padding: 0.8rem 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 200ms ease, filter 200ms ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.07);
-}
-
-.btn-primary {
-  margin-top: 0.7rem;
-  color: #032036;
-  background: linear-gradient(90deg, #7be495, #3bd0a8);
+  border: 1px solid #d7d9db;
+  background: #fff;
+  color: #212224;
+  padding: 0.72rem 0.78rem;
 }
 
 .separator {
-  margin: 1.3rem 0 0.9rem;
-  color: #a4becc;
+  margin: 1.2rem 0 0.8rem;
+  color: #737880;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .social-buttons {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.55rem;
 }
 
-.btn-facebook {
-  color: #eef5ff;
-  background: linear-gradient(90deg, #3359b3, #4b7be6);
+.btn {
+  border: 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  transition: all 170ms ease;
 }
 
-.btn-twitter {
-  color: #06213f;
-  background: linear-gradient(90deg, #7dd4ff, #5eb7f8);
+.btn-sec-col {
+  margin-top: 0.45rem;
+  background: #dccc99;
+  color: #fff;
+}
+
+.btn-sec-col:hover {
+  background: #060606;
+  color: #dccc99;
+}
+
+.btn-third-col {
+  background: #060606;
+  color: #dccc99;
+}
+
+.btn-third-col:hover {
+  background: #dccc99;
+  color: #060606;
 }
 
 .footer-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.2rem;
+  margin-top: 1.1rem;
 }
 
 .action-link {
-  color: #a5f6bf;
-  font-weight: 600;
+  color: #737880;
+  font-weight: 400;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
 .action-link:hover {
-  text-decoration: underline;
+  color: #dccc99;
+  border-bottom-color: #dccc99;
 }
 
-@keyframes enter-card {
-  from {
-    transform: translateY(14px);
-    opacity: 0;
+@media (max-width: 880px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .auth-intro {
+    border-right: 0;
+    border-bottom: 1px solid #eceff3;
   }
 }

@@ -1,49 +1,54 @@
-<section class="auth-wrap">
-  <div class="ambient-shape"></div>
+<section class="auth-shell">
+  <article class="auth-layout">
+    <aside class="auth-intro">
+      <p class="eyebrow">Shop+ Theme</p>
+      <h1>Welcome Back</h1>
+      <p class="supporting">
+        Sign in with your account and continue your shopping flow with classic ecommerce styling.
+      </p>
+      <a routerLink="/search" class="intro-link">Browse products</a>
+    </aside>
 
-  <article class="auth-card">
-    <p class="eyebrow">Azure Entra ID B2C</p>
-    <h1>Welcome back</h1>
-    <p class="supporting">Sign in with your account, Facebook, or Twitter.</p>
+    <div class="auth-form-wrap">
+      <form (ngSubmit)="signInWithCredentials()" class="auth-form">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="email"
+          placeholder="name@company.com"
+          required
+        />
 
-    <form (ngSubmit)="signInWithCredentials()" class="auth-form">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        [(ngModel)]="email"
-        placeholder="name@company.com"
-        required
-      />
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          required
+        />
 
-      <label for="password">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        [(ngModel)]="password"
-        placeholder="Enter your password"
-        required
-      />
+        <button class="btn btn-sec-col" type="submit">Sign In</button>
+      </form>
 
-      <button class="btn btn-primary" type="submit">Sign In</button>
-    </form>
+      <div class="separator"><span>or continue with</span></div>
 
-    <div class="separator"><span>or continue with</span></div>
+      <div class="social-buttons">
+        <button class="btn btn-third-col" type="button" (click)="signInWithFacebook()">
+          Continue with Facebook
+        </button>
+        <button class="btn btn-third-col" type="button" (click)="signInWithTwitter()">
+          Continue with Twitter
+        </button>
+      </div>
 
-    <div class="social-buttons">
-      <button class="btn btn-facebook" type="button" (click)="signInWithFacebook()">
-        Continue with Facebook
-      </button>
-      <button class="btn btn-twitter" type="button" (click)="signInWithTwitter()">
-        Continue with Twitter
-      </button>
-    </div>
-
-    <div class="footer-actions">
-      <a routerLink="/register" class="action-link">Register</a>
-      <a routerLink="/forgot-password" class="action-link">Forgot password?</a>
+      <div class="footer-actions">
+        <a routerLink="/register" class="action-link">Register</a>
+        <a routerLink="/forgot-password" class="action-link">Forgot password?</a>
+      </div>
     </div>
   </article>
 </section>
